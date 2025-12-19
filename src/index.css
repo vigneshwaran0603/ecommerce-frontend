@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  @apply text-gray-100 antialiased;
+  background: #000;
+  overflow-x: hidden;
+}
+
+/* .gold-particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle, rgba(255,215,0,0.18) 1px, transparent 1px);
+  background-size: 3px 3px;
+  animation: goldMove 12s infinite linear;
+} */
+
+/* @keyframes goldMove {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(40px, 40px); }
+} */
+
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 8px rgba(255, 204, 0, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(255, 204, 0, 0.7); }
+}
+
+.glow-gold:hover {
+  animation: glowPulse 1.2s infinite;
+}
+
