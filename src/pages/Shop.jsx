@@ -24,24 +24,24 @@ const Products = () => {
   }, []);
 
   // add to cart
-  const addToCart = async (product) => {
-    try {
-      const res = await axios.post("http://localhost:5000/cart", {
-        productId: product._id,
-        quantity: 1,
-      });
+const addToCart = async (product) => {
+  try {
+    const res = await axios.post(`${API_URL}/cart`, {
+      productId: product._id,
+      quantity: 1,
+    });
 
-      if (res.data.success) {
-        alert("Product added to cart!");
-        navigate("/cart");
-      } else {
-        alert(res.data.message || "Failed to add to cart");
-      }
-    } catch (err) {
-      console.error("Add Cart Error:", err);
-      alert("Failed to add product to cart");
+    if (res.data.success) {
+      alert("Product added to cart!");
+      navigate("/cart");
+    } else {
+      alert(res.data.message || "Failed to add to cart");
     }
-  };
+  } catch (err) {
+    console.error("Add Cart Error:", err);
+    alert("Failed to add product to cart");
+  }
+};
 
   return (
 
@@ -165,7 +165,7 @@ const Products = () => {
 
           {p.image ? (
             <img
-              src={`http://localhost:5000${encodeURI(p.image)}`}
+             src={`${API_URL}${p.image}`}
               alt={p.name}
               className="h-full object-contain
               transition-transform duration-500
