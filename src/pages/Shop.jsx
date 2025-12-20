@@ -7,10 +7,13 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
+
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("https://ecommerce-backend-3-7f0t.onrender.com//products");
-      setProducts(res.data);
+    const res = await axios.get(`${API_URL}/products`);   
+    setProducts(res.data);
     } catch (error) {
       console.log("Error fetching products", error);
     }
