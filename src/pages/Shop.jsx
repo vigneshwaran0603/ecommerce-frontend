@@ -45,81 +45,7 @@ const addToCart = async (product) => {
 
   return (
 
-    // 2
-//     <div className="min-h-screen bg-black px-8 py-12">
-//   <h1
-//     className="text-center text-4xl font-extrabold text-transparent bg-clip-text 
-//     bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-300 
-//     drop-shadow-[0_0_20px_rgba(255,215,0,0.7)] mb-10 tracking-wider"
-//   >
-//     LARVEX PREMIUM COLLECTION
-//   </h1>
-
-//   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-//     {products.map((p, index) => (
-//       <div
-//         key={p._id}
-//         className="relative bg-gradient-to-b from-gray-900 to-black 
-//         border border-yellow-600/30 rounded-2xl p-5 shadow-[0_0_12px_rgba(255,215,0,0.25)] 
-//         hover:shadow-[0_0_35px_rgba(255,215,0,0.7)] hover:scale-[1.05] 
-//         hover:-translate-y-2 transition-all duration-300 group animate-slideUp"
-//         style={{ animationDelay: `${index * 0.1}s` }}
-//       >
-//         {/* Gold Top Bar */}
-//         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-yellow-500 to-yellow-300"></div>
-
-//         {/* PRODUCT IMAGE AREA – Fixed 3:2 Ratio */}
-//         <div className="w-full aspect-[3/2] bg-black/50 rounded-xl overflow-hidden mb-4 
-//             border border-yellow-500/30 flex items-center justify-center">
-//           {p.image ? (
-//             <img
-//               src={`http://localhost:5000${encodeURI(p.image)}`}
-//               alt={p.name}
-//               className="w-full h-full object-cover group-hover:scale-110 
-//               transition-all duration-700"
-//             />
-//           ) : (
-//             <span className="text-yellow-500">No Image</span>
-//           )}
-//         </div>
-
-//         {/* TITLE */}
-//         <h2 className="text-xl font-semibold text-yellow-400 drop-shadow mb-2">
-//           {p.name}
-//         </h2>
-
-//         {/* DESCRIPTION */}
-//         <p className="text-gray-300 text-sm line-clamp-2 mb-2">
-//           {p.description}
-//         </p>
-
-//         {/* PRICE */}
-//         <p className="text-lg font-bold text-yellow-300 mb-3">
-//           ₹ {p.price}
-//         </p>
-
-//         {/* VIEW DETAILS BUTTON */}
-//         <button
-//           className="w-full py-2 font-semibold rounded-xl bg-gradient-to-r from-yellow-600 to-yellow-400 
-//             text-black hover:shadow-[0_0_18px_rgba(255,215,0,1)] hover:scale-[1.07] 
-//             transition-all duration-300"
-//           onClick={() => navigate(`/watchdetails?id=${p._id}`)}
-//         >
-//           View Details
-//         </button>
-
-//         <button
-//           className="w-full py-2 font-semibold rounded-xl bg-gradient-to-r from-yellow-600 to-yellow-400 
-//             text-black hover:shadow-[0_0_18px_rgba(255,215,0,1)] hover:scale-[1.07] 
-//             transition-all duration-300 mt-2" 
-//              onClick={() => addToCart(p)}
-//         >
-//           Add to Cart
-//         </button>
-//       </div>
-//     ))}
-//   </div>
-// </div>
+   
 
 //3
 <div className="min-h-screen bg-black px-8 py-14">
@@ -165,7 +91,7 @@ const addToCart = async (product) => {
 
           {p.image ? (
             <img
-             src={`${API_URL}${p.image}`}
+             src={`${API_URL}${encodeURI(p.image)}`}
               alt={p.name}
               className="h-full object-contain
               transition-transform duration-500
