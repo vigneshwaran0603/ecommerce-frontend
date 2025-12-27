@@ -5,8 +5,10 @@ import axios from "axios";
 import { motion } from "framer-motion";
 
 const addtoCart = async (product) => {
+
+   const API_URL = import.meta.env.VITE_API_URL;
     try {
-      const res = await axios.post("http://localhost:5000/cart", {
+      const res = await axios.post(`${API_URL}/cart`, {
         productId: product._id,
         quantity: 1,
       });
@@ -40,7 +42,7 @@ const ProductDetails = () => {
 
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/product?id=${id}`);
+        const res = await axios.get(`${API_URL}/product?id=${id}`);
         setProduct(res.data);
       } catch {
         setError("Unable to fetch product.");
@@ -80,7 +82,7 @@ const ProductDetails = () => {
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-[#D4AF37]/20 blur-3xl"></div>
             <img
-              src={`http://localhost:5000${encodeURI(product.image || "")}`}
+              src={`${API_URL}${encodeURI(product.image || "")}`}
               alt={product.name}
               className="relative w-[340px] h-[340px] object-cover rounded-2xl
                          "
