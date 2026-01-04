@@ -91,7 +91,7 @@ const addToCart = async (product) => {
 
           {p.image ? (
             <img
-             src={`${API_URL}${encodeURI(p.image)}`}
+             src={p.image}
               alt={p.name}
               className="h-full object-contain
               transition-transform duration-500
