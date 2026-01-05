@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const AdminLogin = () => {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
     const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: "", password: "" });
@@ -17,7 +20,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/admin/login", form);
+      const res = await axios.post(`${API_URL}/admin/login`, form);
       localStorage.setItem("adminToken", res.data.token);
     //   alert("Login successful!");
        navigate("/admin");   // <<< redirect to admin page

@@ -7,13 +7,16 @@ import CheckoutForm from "./CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const Cart = () => {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const [cartItems, setCartItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
 
   // Fetch cart from backend
   const fetchCart = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/cart");
+      const res = await axios.get(`${API_URL}/cart`);
       setCartItems(res.data.cart);
     } catch (err) {
       console.error("Error fetching cart:", err);
@@ -27,7 +30,7 @@ const Cart = () => {
   // ✅ Delete cart item using your API
   const handleDelete = async (productId) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/cart/${productId}`);
+      const res = await axios.delete(`${API_URL}/cart/${productId}`);
       alert(res.data.message);
       fetchCart(); // reload cart
     } catch (err) {

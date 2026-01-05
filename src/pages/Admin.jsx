@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 
 export default function Admin() {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const [showAddForm, setShowAddForm] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -29,11 +32,9 @@ export default function Admin() {
       formData.append("description", description);
       formData.append("price", price);
       formData.append("category", category);
-      if (image) formData.append("image", image);
+      formData.append("image", image);
 
-      const res = await axios.post("http://localhost:5000/products", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(`${API_URL}/products`, formData);
 
       setMessage("Product created successfully!");
       alert("Product created successfully!");
@@ -49,9 +50,7 @@ export default function Admin() {
       setMessage(error.response?.data?.error || "Failed to add product");
     }
   };
-
-
-  // update function
+ 
   
 
   return (

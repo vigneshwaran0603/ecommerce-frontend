@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ username: "", email: "", password: "" });
@@ -11,7 +14,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/auth/register", {
+      await axios.post(`${API_URL}/auth/register`, {
         name: form.username,
         email: form.email,
         password: form.password,

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const UpdateProduct = () => {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const { id } = useParams();     // 🔥 GET ID FROM URL
   const navigate = useNavigate();
 
@@ -19,7 +22,7 @@ const UpdateProduct = () => {
   // Fetch product by ID
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`http://localhost:5000/products/${id}`);
+      const res = await fetch(`${API_URL}/products/${id}`);
       const data = await res.json();
 
       setProduct({
@@ -30,7 +33,7 @@ const UpdateProduct = () => {
         image: null,
       });
 
-      setPreview(`http://localhost:5000${data.image}`);
+      setPreview(`${API_URL}${data.image}`);
     };
 
     fetchProduct();
@@ -59,7 +62,7 @@ const UpdateProduct = () => {
       formData.append("image", product.image);
     }
 
-    await fetch(`http://localhost:5000/product/${id}`, {
+    await fetch(`${API_URL}/product/${id}`, {
       method: "PUT",
       body: formData,
     });

@@ -3,6 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function UpdateProduct() {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -10,7 +13,7 @@ export default function UpdateProduct() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/products");
+        const res = await axios.get(`${API_URL}/products`);
         setProducts(res.data);
       } catch (error) {
         console.error("Failed to fetch products:", error);
@@ -46,8 +49,8 @@ export default function UpdateProduct() {
             <div className="w-full h-56 rounded-xl overflow-hidden bg-black/60 mb-4 border border-yellow-500/30">
               {product.image ? (
                 <img
-                //   src={`http://localhost:5000/uploads/${product.image}`}
-                src={`http://localhost:5000${encodeURI(product.image || "")}`}
+               
+                src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
                 />

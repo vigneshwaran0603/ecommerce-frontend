@@ -3,6 +3,9 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 
 const CheckoutForm = ({ cartItems, onPaymentSuccess }) => {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -18,7 +21,7 @@ const CheckoutForm = ({ cartItems, onPaymentSuccess }) => {
 
     try {
       // 1️⃣ Create PaymentIntent on backend
-      const res = await axios.post("http://localhost:5000/payment/create", { cartItems });
+      const res = await axios.post(`${API_URL}/payment/create`, { cartItems });
       const clientSecret = res.data.payment.clientSecret;
 
       // 2️⃣ Confirm Card Payment
@@ -37,7 +40,7 @@ const CheckoutForm = ({ cartItems, onPaymentSuccess }) => {
 
       if (paymentResult.paymentIntent.status === "succeeded") {
         // 3️⃣ Verify payment on backend
-        const verifyRes = await axios.post("http://localhost:5000/payment/verify", {
+        const verifyRes = await axios.post(`${API_URL}/payment/verify`, {
           paymentIntentId: paymentResult.paymentIntent.id,
         });
 
