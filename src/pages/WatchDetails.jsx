@@ -25,6 +25,9 @@ const addtoCart = async (product) => {
     }
   };
 const ProductDetails = () => {
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "https://ecommerce-backend-3-7f0t.onrender.com";
   const navigate = useNavigate();
   const { search } = useLocation();
   const id = new URLSearchParams(search).get("id");
@@ -82,7 +85,7 @@ const ProductDetails = () => {
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-[#D4AF37]/20 blur-3xl"></div>
             <img
-              src={`${API_URL}${encodeURI(product.image || "")}`}
+              src={product.image}
               alt={product.name}
               className="relative w-[340px] h-[340px] object-cover rounded-2xl
                          "
