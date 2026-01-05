@@ -9,11 +9,11 @@ const Products = () => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-console.log("API URL:", API_URL);
+
 
   const fetchProducts = async () => {
     try {
-    const res = await axios.get(`${API_URL}/products`);   
+    const res = await axios.get(`https://ecommerce-backend-3-7f0t.onrender.com/products`);   
     setProducts(res.data);
     } catch (error) {
       console.log("Error fetching products", error);
