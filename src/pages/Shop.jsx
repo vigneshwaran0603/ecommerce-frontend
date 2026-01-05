@@ -14,7 +14,8 @@ const Products = () => {
   const fetchProducts = async () => {
     try {
     const res = await axios.get(`https://ecommerce-backend-3-7f0t.onrender.com/products`);   
-    setProducts(res.data);
+    // setProducts(res.data);
+     setProducts(res.data.products); // ✅ FIX
     } catch (error) {
       console.log("Error fetching products", error);
     }
